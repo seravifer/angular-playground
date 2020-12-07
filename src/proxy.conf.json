@@ -1,0 +1,10 @@
+{
+  "/api": {
+    "target": "https://b08da1e2-86d4-48b4-9bb9-a7abfcaa41c1.mock.pstmn.io",
+    "secure": false,
+    "changeOrigin": true,
+    "pathRewrite":  {
+      "^/api": ""
+    }
+  }
+}
