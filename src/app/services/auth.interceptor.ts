@@ -14,6 +14,7 @@ export class AuthInterceptor implements HttpInterceptor {
             withCredentials: true,
             url: '/api/good',
             setHeaders: {
+              /* eslint-disable @typescript-eslint/naming-convention */
               Authorization: `Digest`
             }
           });
