@@ -24,6 +24,7 @@
     "@angular/router": "~11.1.0",
     "@angular/service-worker": "~11.1.0",
     "@ngneat/transloco": "^2.20.0",
+    "@ngrx/store": "^10.1.2",
     "date-fns": "^2.16.1",
     "rxjs": "~6.6.3",
     "tslib": "^2.1.0",
