@@ -1,23 +1,27 @@
-import { UserService } from '../../services/user.service';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
 
-  constructor(
-    private userService: UserService
-  ) { }
+  public menu = [
+    {
+      path: '/error',
+      title: 'ErrorHandler'
+    },
+    {
+      path: '/reactive-form',
+      title: 'Reactive Forms'
+    },
+    {
+      path: '/interceptor',
+      title: 'HttpInterceptor'
+    },
+  ];
 
-  ngOnInit(): void {
-    this.userService.requestData().subscribe(res => {
-      console.log('Result', res);
-    }, err => {
-      console.error(err);
-    });
-  }
+  constructor() { }
 
 }

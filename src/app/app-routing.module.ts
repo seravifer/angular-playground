@@ -3,6 +3,11 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   {
+    path: '',
+    redirectTo: '/home',
+    pathMatch: 'full'
+  },
+  {
     path: 'home',
     loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule)
   },
@@ -13,6 +18,10 @@ const routes: Routes = [
   {
     path: 'reactive-form',
     loadChildren: () => import('./pages/reactive-form/reactive-form.module').then(m => m.ReactiveFormModule)
+  },
+  {
+    path: 'interceptor',
+    loadChildren: () => import('./pages/interceptor/interceptor.module').then(m => m.InterceptorModule)
   },
 ];
 
