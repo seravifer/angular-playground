@@ -1,7 +1,8 @@
-import { AuthInterceptor } from './services/auth.interceptor';
+import { MyErrorHandler } from './services/error-handler.service';
+import { AuthInterceptor } from './services/auth-interceptor.service';
 import { TranslationModule } from './i18n.module';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { ErrorHandler, NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -29,6 +30,9 @@ import { StoreModule } from '@ngrx/store';
   providers: [
     {
       provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true
+    },
+    {
+      provide: ErrorHandler, useClass: MyErrorHandler
     }
   ],
   bootstrap: [AppComponent]
