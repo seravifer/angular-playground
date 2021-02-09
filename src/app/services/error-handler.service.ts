@@ -5,7 +5,7 @@ export class MyErrorHandler implements ErrorHandler {
   constructor() { }
 
   handleError(error: any) {
-    console.log('Log Error', error);
+    console.log('MyErrorHandler', error);
     throw error;
   }
 
