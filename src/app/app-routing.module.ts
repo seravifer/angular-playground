@@ -23,6 +23,10 @@ const routes: Routes = [
     path: 'interceptor',
     loadChildren: () => import('./pages/interceptor/interceptor.module').then(m => m.InterceptorModule)
   },
+  {
+    path: 'worker',
+    loadChildren: () => import('./pages/worker/worker.module').then(m => m.WorkerModule)
+  },
 ];
 
 @NgModule({

@@ -20,6 +20,10 @@ export class HomeComponent {
       path: '/interceptor',
       title: 'HttpInterceptor'
     },
+    {
+      path: '/worker',
+      title: 'Web Worker'
+    },
   ];
 
   constructor() { }

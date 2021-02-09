@@ -32,7 +32,8 @@
               "./node_modules/@angular/material/prebuilt-themes/purple-green.css",
               "src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "webWorkerTsConfig": "tsconfig.worker.json"
           },
           "configurations": {
             "production": {
@@ -109,6 +110,9 @@
             "lintFilePatterns": [
               "src/**/*.ts",
               "src/**/*.html"
+            ],
+            "tsConfig": [
+              "tsconfig.worker.json"
             ]
           }
         },
