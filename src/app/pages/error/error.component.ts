@@ -1,4 +1,4 @@
-import { Component, NgZone } from '@angular/core';
+import { Component, NgZone, OnDestroy } from '@angular/core';
 import { of, throwError } from 'rxjs';
 import { switchMap } from 'rxjs/operators';
 
@@ -7,14 +7,36 @@ import { switchMap } from 'rxjs/operators';
   templateUrl: './error.component.html',
   styleUrls: ['./error.component.scss']
 })
-export class ErrorComponent {
+export class ErrorComponent implements OnDestroy {
+
+  private gOldOnError: any;
 
   constructor(
     private ngZone: NgZone
-  ) { }
+  ) {
+    this.initGlobalErrorHandler();
+  }
+
+  initGlobalErrorHandler() {
+    this.gOldOnError = window.onerror;
+    // Override previous handler.
+    window.onerror = (errorMsg, url, lineNumber) => {
+      if (this.gOldOnError) {
+        // Call previous handler.
+        return this.gOldOnError(errorMsg, url, lineNumber);
+      }
+      console.log('window.onerror', errorMsg);
+      // Just let default handler run.
+      return false;
+    };
+  }
+
+  ngOnDestroy() {
+    window.onerror = this.gOldOnError;
+  }
 
   throwSimpleError() {
-      throw new Error('throwSimpleError');
+    throw new Error('throwSimpleError');
   }
 
   throwOutsideError() {
@@ -26,7 +48,7 @@ export class ErrorComponent {
   throwErrorAndCatch() {
     try {
       throw new Error('throwErrorAndCatch');
-    } catch(err) {
+    } catch (err) {
       console.log('Catch throwErrorAndCatch');
     }
   }
