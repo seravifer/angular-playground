@@ -9,23 +9,23 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule)
+    loadChildren: () => import('./features/home/home.module').then(m => m.HomeModule)
   },
   {
     path: 'error',
-    loadChildren: () => import('./pages/error/error.module').then(m => m.ErrorModule)
+    loadChildren: () => import('./features/error/error.module').then(m => m.ErrorModule)
   },
   {
     path: 'reactive-form',
-    loadChildren: () => import('./pages/reactive-form/reactive-form.module').then(m => m.ReactiveFormModule)
+    loadChildren: () => import('./features/reactive-form/reactive-form.module').then(m => m.ReactiveFormModule)
   },
   {
     path: 'interceptor',
-    loadChildren: () => import('./pages/interceptor/interceptor.module').then(m => m.InterceptorModule)
+    loadChildren: () => import('./features/interceptor/interceptor.module').then(m => m.InterceptorModule)
   },
   {
     path: 'worker',
-    loadChildren: () => import('./pages/worker/worker.module').then(m => m.WorkerModule)
+    loadChildren: () => import('./features/worker/worker.module').then(m => m.WorkerModule)
   },
 ];
 
