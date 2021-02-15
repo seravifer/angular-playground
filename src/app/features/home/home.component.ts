@@ -24,6 +24,14 @@ export class HomeComponent {
       path: '/worker',
       title: 'Web Worker'
     },
+    {
+      path: '/material',
+      title: 'Material Design'
+    },
+    {
+      path: '/transloco',
+      title: 'Transloco'
+    },
   ];
 
   constructor() { }
