@@ -31,7 +31,14 @@ const routes: Routes = [
     path: 'material',
     loadChildren: () => import('./features/material/material.module').then(m => m.MaterialModule)
   },
-  { path: 'transloco', loadChildren: () => import('./features/transloco/transloco.module').then(m => m.TranslocoModule) },
+  {
+    path: 'transloco',
+    loadChildren: () => import('./features/transloco/transloco.module').then(m => m.TranslocoModule)
+  },
+  {
+    path: 'upload-file',
+    loadChildren: () => import('./features/upload-file/upload-file.module').then(m => m.UploadFileModule)
+  },
 ];
 
 @NgModule({
