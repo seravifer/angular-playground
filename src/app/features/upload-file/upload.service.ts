@@ -11,6 +11,10 @@ export class UploadService {
     private http: HttpClient
   ) { }
 
+  testHelloWorld() {
+    return this.http.get('/api/');
+  }
+
   upload(formData: FormData) {
     return this.http.post<any>('/api/upload', formData, {
       reportProgress: true,

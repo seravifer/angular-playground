@@ -28,6 +28,7 @@ export class UploadFileComponent {
   }
 
   onSubmit() {
+    return this.uploadService.testHelloWorld().subscribe();
     const formData = new FormData();
     formData.append('file', this.file);
     this.uploadService.upload(formData).subscribe(
