@@ -1,11 +1,14 @@
 import { HttpClient, HttpEventType } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs/operators';
+import { Subject } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UploadService {
+
+  private progress = new Subject<number>();
 
   constructor(
     private http: HttpClient
@@ -33,4 +36,26 @@ export class UploadService {
       })
     );
   }
+
+  uploadAsync(formData: FormData) {
+    this.progress.next(0);
+    this.http.post<any>('/api/upload', formData, {
+      reportProgress: true,
+      observe: 'events'
+    }).pipe(
+      tap((event) => {
+        switch (event.type) {
+          case HttpEventType.UploadProgress:
+            this.progress.next(Math.round(100 * event.loaded / event.total));
+            break;
+        }
+      })
+    ).subscribe();
+    return this.progress;
+  }
+
+  getProgress() {
+    return this.progress;
+  }
+
 }

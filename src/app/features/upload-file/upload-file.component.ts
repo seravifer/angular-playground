@@ -1,5 +1,7 @@
 import { UploadService } from './upload.service';
 import { Component } from '@angular/core';
+import { timer } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-upload-file',
@@ -8,13 +10,11 @@ import { Component } from '@angular/core';
 })
 export class UploadFileComponent {
 
+  time = timer(0, 1000).pipe(map(() => new Date()));
+
   file: File;
   error: string;
-  uploadResponse = {
-    status: '',
-    message: '',
-    filePath: ''
-  };
+  uploadResponse = 0;
 
   constructor(
     private uploadService: UploadService
@@ -28,11 +28,24 @@ export class UploadFileComponent {
   }
 
   onSubmit() {
-    return this.uploadService.testHelloWorld().subscribe();
     const formData = new FormData();
     formData.append('file', this.file);
     this.uploadService.upload(formData).subscribe(
-      (res) => this.uploadResponse = res,
+      (res) => {
+        this.uploadResponse = res;
+      },
+      (err) => {
+        console.error(err);
+      });
+  }
+
+  onSubmitAsync() {
+    const formData = new FormData();
+    formData.append('file', this.file);
+    this.uploadService.uploadAsync(formData).subscribe(
+      (res) => {
+        this.uploadResponse = res;
+      },
       (err) => {
         console.error(err);
       });

@@ -32,7 +32,7 @@ app.post('/upload', (req, res) => {
       return res.status(500).send(err);
     }
     console.log('Success!');
-    res.send('ok');
+    res.send({});
   })
 })
 

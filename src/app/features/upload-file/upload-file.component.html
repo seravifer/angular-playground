@@ -1,21 +1,15 @@
 <h2>Upload file</h2>
 
 <div>
-  <form>
-    <input type="file" name="file" (change)="onFileChange($event)" />
-    <button type="submit" (click)="onSubmit()">Upload</button>
-  </form>
+  <p>{{ time | async | date: 'HH:mm:ss'}}</p>
+  <input type="file" name="file" (change)="onFileChange($event)" />
+  <button (click)="onSubmitAsync()">Upload</button>
 
   <div *ngIf="error">
     {{ error.message }}
   </div>
-  <div *ngIf="uploadResponse.status === 'error'">
-    {{ uploadResponse.message }}
-  </div>
-  <div *ngIf="uploadResponse.status === 'progress'">
-    <div role="progressbar" [style.width.%]="uploadResponse.message" aria-valuenow="25" aria-valuemin="0"
-      aria-valuemax="100">
-      {{ uploadResponse.message }}%
-    </div>
+
+  <div>
+      {{ uploadResponse }}%
   </div>
 </div>

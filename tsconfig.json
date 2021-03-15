@@ -8,6 +8,12 @@
     "declaration": false,
     "downlevelIteration": true,
     "experimentalDecorators": true,
+    "paths": {
+      "library-playground": [
+        "dist/library-playground/library-playground",
+        "dist/library-playground"
+      ]
+    },
     "moduleResolution": "node",
     "importHelpers": true,
     "target": "es2015",

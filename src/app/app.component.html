@@ -1,2 +1,11 @@
 <h1>Angular Playground</h1>
+
+<div>
+  <a *ngFor="let menuItem of menu" [routerLink]="['/' + menuItem.path]">{{ menuItem.title }}</a>
+</div>
+
 <router-outlet></router-outlet>
+
+<div class="status">
+  Progreso: {{ uploadService.getProgress() | async }}%
+</div>
