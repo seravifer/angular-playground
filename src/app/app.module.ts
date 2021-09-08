@@ -1,4 +1,4 @@
-import { TranslationModule } from './core/i18n.module';
+import { TranslationModule } from './i18n.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
@@ -25,11 +25,11 @@ export function initializeApp() {
     BrowserAnimationsModule,
     HttpClientModule,
     TranslationModule,
+    StoreModule.forRoot({}, {}),
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
       registrationStrategy: 'registerImmediately'
     }),
-    StoreModule.forRoot({}, {})
   ],
   providers: [
     {
