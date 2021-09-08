@@ -15,7 +15,7 @@ export class WorkerComponent implements OnInit {
 
   runWorker() {
     if (typeof Worker !== 'undefined') {
-      const worker = new Worker('./web-worker.worker', { type: 'module' });
+      const worker = new Worker(new URL('./web-worker.worker', import.meta.url), { type: 'module' });
 
       worker.onmessage = ({ data }) => {
         console.log(`Worker send message: ${data}`);
