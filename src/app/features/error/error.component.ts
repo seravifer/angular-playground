@@ -1,6 +1,6 @@
 import { Component, NgZone, OnDestroy } from '@angular/core';
-import { of, throwError } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { concat, EMPTY, from, of, throwError } from 'rxjs';
+import { catchError, map, switchMap, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-error',
@@ -60,5 +60,50 @@ export class ErrorComponent implements OnDestroy {
       error: error => console.log(error)
     });
   }
+
+  observableWithError() {
+    concat(
+      of('').pipe(
+        tap(() => {
+          console.log('First observable');
+        }),
+        map(res => {
+          throw new Error('first-error');
+        }),
+        /*catchError(err => {
+          console.log('catchError', err);
+          throw err;
+        })*/
+      ),
+      of('').pipe(
+        tap(() => {
+          console.log('Second observable');
+        })
+      )
+    ).subscribe(res => {
+        console.log('Success!', res);
+      }, err => {
+        console.log('Global error:', err.message);
+      });
+
+
+    of('first').pipe(
+      map(res => {
+        throw new Error('Error');
+      }),
+      catchError(err => {
+        console.log('catchError');
+        // TODO: show modal
+        return EMPTY;
+      }),
+      switchMap(res => of('second'))
+    ).subscribe(res => {
+        console.log('Success!', res);
+      }, err => {
+        console.log('Global error');
+      });
+  }
+
+
 
 }

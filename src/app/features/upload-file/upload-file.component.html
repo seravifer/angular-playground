@@ -1,0 +1,15 @@
+<h2>Upload file</h2>
+
+<div>
+  <p>{{ time | async | date: 'HH:mm:ss'}}</p>
+  <input type="file" name="file" (change)="onFileChange($event)" />
+  <button (click)="onSubmitAsync()">Upload</button>
+
+  <div *ngIf="error">
+    {{ error.message }}
+  </div>
+
+  <div>
+      {{ uploadResponse }}%
+  </div>
+</div>

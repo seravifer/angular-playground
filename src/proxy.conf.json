@@ -1,8 +1,8 @@
 {
   "/api": {
-    "target": "https://b08da1e2-86d4-48b4-9bb9-a7abfcaa41c1.mock.pstmn.io",
+    "target": "http://[::1]:8080",
     "secure": false,
-    "changeOrigin": true,
+    "logLevel": "debug",
     "pathRewrite":  {
       "^/api": ""
     }
