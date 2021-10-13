@@ -1,12 +1,13 @@
 import { Subject } from 'rxjs';
-import { Injectable } from "@angular/core"
+import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root'
 })
 export class StorageService {
 
   private changeSubject = new Subject<string | null>();
+  // eslint-disable-next-line @typescript-eslint/member-ordering
   public change$ = this.changeSubject.asObservable();
 
   constructor() { }
