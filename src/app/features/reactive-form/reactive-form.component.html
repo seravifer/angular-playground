@@ -1,24 +1,25 @@
 <h2>reactive-form works!</h2>
 
-<form [formGroup]="newUserForm">
-  <input
-    type="text"
-    placeholder="ID usuario"
-    formControlName="id" />
-  <input
-    type="text"
-    placeholder="Nombre"
-    formControlName="name" />
+<form [formGroup]="form">
+  <input type="text" placeholder="ID usuario" formControlName="id" />
+  <input type="text" placeholder="Nombre" formControlName="name" />
+  <div *ngFor="let country of countries">
+    <input
+      type="checkbox"
+      formArrayName="selectedCountries"
+      [value]="country.value"
+      (change)="onCheckboxChange($event.target.checked)"
+    />
+    {{ country.name }}
+  </div>
   <button
     (click)="onSubmit()"
-    [attr.disabled]="newUserForm.invalid ? true : null">
+    [attr.disabled]="form.invalid ? true : null"
+  >
     Registrar usuario
   </button>
 </form>
 
 <pre>
-{{ {
-  id: newUserForm.controls.id?.errors,
-  username: newUserForm.controls.username?.errors
-} | json }}
+  {{ form.value | json }}
 </pre>
