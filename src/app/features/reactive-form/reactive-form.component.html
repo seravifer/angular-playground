@@ -8,7 +8,7 @@
       type="checkbox"
       formArrayName="selectedCountries"
       [value]="country.value"
-      (change)="onCheckboxChange($event.target.checked)"
+      (change)="onCheckboxChange($event)"
     />
     {{ country.name }}
   </div>

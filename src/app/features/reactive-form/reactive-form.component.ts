@@ -29,13 +29,13 @@ export class ReactiveFormComponent implements OnInit {
 
   constructor() {}
 
-  onCheckboxChange(checked: boolean) {
+  onCheckboxChange(event: any) {
     const selectedCountries = this.form.controls.selectedCountries as FormArray;
-    if (checked) {
-      selectedCountries.push(new FormControl(checked));
+    if (event.target.checked) {
+      selectedCountries.push(new FormControl(event.target.value));
     } else {
       const index = selectedCountries.controls.findIndex(
-        (x) => x.value === checked
+        (x) => x.value === event.target.value
       );
       selectedCountries.removeAt(index);
     }
