@@ -4,43 +4,43 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-
   public menu = [
     {
       path: '/error',
-      title: 'ErrorHandler'
+      title: 'ErrorHandler',
     },
     {
       path: '/reactive-form',
-      title: 'Reactive Forms'
+      title: 'Reactive Forms',
     },
     {
       path: '/interceptor',
-      title: 'HttpInterceptor'
+      title: 'HttpInterceptor',
     },
     {
       path: '/worker',
-      title: 'Web Worker'
+      title: 'Web Worker',
     },
     {
       path: '/material',
-      title: 'Material Design'
+      title: 'Material Design',
     },
     {
       path: '/transloco',
-      title: 'Transloco'
+      title: 'Transloco',
     },
     {
       path: '/upload-file',
-      title: 'Upload file'
+      title: 'Upload file',
+    },
+    {
+      path: '/primeng',
+      title: 'PrimeNG',
     },
   ];
 
-  constructor(
-    public uploadService: UploadService
-  ) {}
-
+  constructor(public uploadService: UploadService) {}
 }
